@@ -4,4 +4,4 @@ const Dashboard = () => {
   return <div>Dashboard</div>;
 };
 
-export default Dasboardh;
+export default Dashboard;
