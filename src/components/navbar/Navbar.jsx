@@ -23,6 +23,7 @@ export default function Navbar() {
             {link.title}
           </Link>
         ))}
+        <button className={styles.logout}>Logout</button>
       </div>
     </nav>
   );
