@@ -13,7 +13,7 @@ const links = [
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav className={styles.container}>
       <Link href="/">MY APP</Link>
       <div>
         {links.map((link) => (

@@ -3,7 +3,7 @@ import styles from './footer.module.css';
 export default function Footer() {
   const date = new Date().getFullYear();
   return (
-    <footer>
+    <footer className={styles.container}>
       <div>{`${date} MY App. All rights reserved.`}</div>
       <div></div>
     </footer>
