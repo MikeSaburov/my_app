@@ -8,6 +8,18 @@ const links = [
   { id: 5, title: 'Contact', url: '/contact' },
   { id: 6, title: 'Dashboard', url: '/dashboard' },
 ];
+
 export default function Navbar() {
-  return <nav></nav>;
+  return (
+    <nav>
+      <Link href="/">MY APP</Link>
+      <div>
+        {links.map((link) => (
+          <Link href={link.url} key={link.id}>
+            {link.title}
+          </Link>
+        ))}
+      </div>
+    </nav>
+  );
 }
