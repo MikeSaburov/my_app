@@ -14,8 +14,10 @@ const links = [
 export default function Navbar() {
   return (
     <nav className={styles.container}>
-      <Link href="/">MY APP</Link>
-      <div>
+      <Link className={styles.logo} href="/">
+        MY APP
+      </Link>
+      <div className={styles.links}>
         {links.map((link) => (
           <Link href={link.url} key={link.id}>
             {link.title}
