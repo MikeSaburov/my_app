@@ -7,17 +7,17 @@ export const About = () => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <Image
-          src="https://img.freepik.com/free-photo/conceptual-business-illustration-with-wooden-blocks-and-icons-on-marble-background_2100-491.jpg?w=1800&t=st=1706782825~exp=1706783425~hmac=e495f1582e053d1b97207431e4b8eb09af6e54b07fec87647fb506fe0560e3a0"
+          src="https://img.freepik.com/free-vector/startup-successful-launch-business-project-boost_107791-11951.jpg?w=1380&t=st=1706783114~exp=1706783714~hmac=ec275ec96951e66af38c918a7f24ba143a0788199019a27329f7e95bf0c62c94"
           fill={true}
           alt="about us"
           className="styles.img"
         />
-        <div className={styles.imgText}>
+        {/* <div className={styles.imgText}>
           <h1 className={styles.imgTitle}>Lorem ipsum dolor sit</h1>
           <h2 className={styles.desc}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.{' '}
           </h2>
-        </div>
+        </div> */}
       </div>
       <div className={styles.textContainer}>
         <div className={styles.item}>
