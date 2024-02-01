@@ -6,7 +6,7 @@ export const About = () => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <Image
-          src="https://img.freepik.com/free-photo/business-team-working-office-worker-concept_53876-23476.jpg?w=1800&t=st=1706781501~exp=1706782101~hmac=14b58d7733fd2bb5fd997c0cfa9bd880e4d0e1758c67384077ca401cc7096770"
+          src="https://img.freepik.com/free-photo/diverse-businesspeople-having-a-meeting_53876-103954.jpg?w=1380&t=st=1706781338~exp=1706781938~hmac=2c1515abc5e052170e888ac50f2f5710d695ffcf9b183f34e2f87d0b8e76aa0f"
           fill={true}
           alt="about us"
           className="styles.img"
