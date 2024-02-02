@@ -39,8 +39,11 @@
   bottom: 10px;
   font-size: 40px;
   font-weight: bold;
+  color: gray;
+  opacity: 0.8;
 }
 
 .item:hover .title {
   color: #53c28b;
+  opacity: 0.9;
 }
