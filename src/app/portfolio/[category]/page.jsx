@@ -15,7 +15,7 @@ const Category = ({ params }) => {
           <Image
             className={styles.img}
             fill={true}
-            src="https://images.unsplash.com/photo-1480506132288-68f7705954bd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBvcnRmb2xpb3xlbnwwfHwwfHx8MA%3D%3D"
+            src="https://img.freepik.com/free-vector/shed-concept-illustration_114360-8308.jpg?w=826&t=st=1706951334~exp=1706951934~hmac=30850bf01c30e939de3db8b9a862559a80c5c8044a8f97d5ee8ead608d635a62"
             alt="image"
           />
         </div>
