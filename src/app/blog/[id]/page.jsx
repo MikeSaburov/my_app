@@ -21,7 +21,7 @@ const BlogId = () => {
         </div>
         <div className={styles.imageContainer}>
           <Image
-            src="https://img.freepik.com/free-photo/nobody-at-empty-desk-with-streaming-equipment-to-broadcast-live-conversation-on-social-media-no-people-in-space-with-podcast-station-microphone-and-headphones-sound-production_482257-42287.jpg?w=1380&t=st=1706953854~exp=1706954454~hmac=78ffd69a08ace8ef75a83e1ee0472f7923df58c5dc33f960332062f3b067219c"
+            src="https://img.freepik.com/premium-photo/blog-writing-online-on-the-internet-blue-computer-keyboard_770123-7086.jpg?w=1380"
             alt=""
             fill={true}
             className={styles.image}
