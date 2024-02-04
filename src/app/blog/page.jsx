@@ -4,7 +4,8 @@ import Image from 'next/image';
 
 async function getData() {
   const res = await fetch(
-    'https://jsonplaceholder.typicode.com/posts?_limit=5'
+    'https://jsonplaceholder.typicode.com/posts?_limit=5',
+    { next: { revalidate: 3600 } }
   );
   if (!res.ok) {
     throw new Error('Failed to fetch data');
