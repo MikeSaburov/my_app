@@ -3,6 +3,8 @@ import styles from './page.module.css';
 import Button from '@/components/button/button';
 import Hero from '../../public/hero.png';
 
+//GuvZAGkkXcO2bMRO (admin)
+
 export default function Home() {
   return (
     <main className={styles.container}>
