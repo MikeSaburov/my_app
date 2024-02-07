@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const { Shema } = mongoose;
+const { Schema } = mongoose;
 
-const postSchema = new Shema(
+const postSchema = new Schema(
   {
     title: {
       type: String,
@@ -30,4 +30,4 @@ const postSchema = new Shema(
   { timestamps: true }
 );
 
-export default mongoose.model('Post', postSchema);
+const Post = (module.exports = mongoose.model('Post', postSchema));
