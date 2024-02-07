@@ -12,7 +12,7 @@ const postSchema = new Shema(
     desc: {
       type: String,
       required: true,
-      min: 3,
+      min: 5,
     },
     img: {
       type: String,
