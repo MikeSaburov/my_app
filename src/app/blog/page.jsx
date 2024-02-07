@@ -3,10 +3,9 @@ import styles from './blog.module.css';
 import Image from 'next/image';
 
 async function getData() {
-  const res = await fetch(
-    'https://jsonplaceholder.typicode.com/posts?_limit=5',
-    { cache: 'no-store' }
-  );
+  const res = await fetch('http://localhost:3000/api/posts', {
+    cache: 'no-store',
+  });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
@@ -21,13 +20,13 @@ const Blog = async () => {
     <div className={styles.mainContainer}>
       {data.map((post) => (
         <Link
-          href={`blog/${post.id}`}
+          href={`blog/${post._id}`}
           className={styles.container}
-          key={post.id}
+          key={post._id}
         >
           <div className={styles.imageContainer}>
             <Image
-              src="https://img.freepik.com/free-vector/tiny-house-concept-illustration_114360-9087.jpg?w=826&t=st=1706952596~exp=1706953196~hmac=e161c1977930bbe17f0dab1b175c75e7700ad4dddee48cfef327165176be7fd2"
+              src={post.img}
               alt="blog"
               width={400}
               height={250}
@@ -37,7 +36,7 @@ const Blog = async () => {
           </div>
           <div className={styles.content}>
             <h1 className={styles.title}>{post.title}</h1>
-            <p className={styles.desc}>{post.body}</p>
+            <p className={styles.desc}>{post.content}</p>
           </div>
         </Link>
       ))}
