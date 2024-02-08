@@ -2,7 +2,7 @@ import styles from './id.module.css';
 import Image from 'next/image';
 
 async function getData(id) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
     cache: 'no-store',
   });
   if (!res.ok) {
@@ -19,7 +19,7 @@ const BlogId = async ({ params }) => {
       <div className={styles.top}>
         <div className={styles.info}>
           <h1 className={styles.title}>{data.title}</h1>
-          <p className={styles.desc}>Краткое описание</p>
+          <p className={styles.desc}>{data.desc}</p>
           <div className={styles.author}>
             <Image
               src="https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-a-cigarette_52683-34828.jpg?w=826&t=st=1706953919~exp=1706954519~hmac=f6f58336953e0536bf3c5c29a3dc971e116b6eec1736eab8ff601b932d21c328"
@@ -28,20 +28,15 @@ const BlogId = async ({ params }) => {
               height={80}
               className={styles.avatar}
             />
-            <span className={styles.username}>Mike</span>
+            <span className={styles.username}>{data.username}</span>
           </div>
         </div>
         <div className={styles.imageContainer}>
-          <Image
-            src="https://img.freepik.com/premium-photo/blog-writing-online-on-the-internet-blue-computer-keyboard_770123-7086.jpg?w=1380"
-            alt=""
-            fill={true}
-            className={styles.image}
-          />
+          <Image src={data.img} alt="" fill={true} className={styles.image} />
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.text}>{data.body}</p>
+        <p className={styles.text}>{data.content}</p>
       </div>
     </div>
   );
