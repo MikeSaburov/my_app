@@ -2,6 +2,11 @@ import Link from 'next/link';
 import styles from './blog.module.css';
 import Image from 'next/image';
 
+export const metadata = {
+  title: 'Blog',
+  description: 'MY App Posts',
+};
+
 async function getData() {
   const res = await fetch('http://localhost:3000/api/posts', {
     cache: 'no-store',
