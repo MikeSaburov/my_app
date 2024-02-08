@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import styles from './dashboard.module.css';
 import useSWR from 'swr';
+import { useSession } from 'next-auth/react';
 
 const Dashboard = () => {
   // const [data, setData] = useState([]);
@@ -26,6 +27,9 @@ const Dashboard = () => {
 
   // console.log(data);
 
+  const session = useSession();
+  console.log(session);
+
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
     'https://jsonplaceholder.typicode.com/posts?_limit=15',
@@ -33,7 +37,7 @@ const Dashboard = () => {
   );
   if (error) return <div>ошибка загрузки</div>;
   if (isLoading) return <div>загрузка...</div>;
-  console.log(data);
+
   return <div>DAshboard</div>;
 };
 
