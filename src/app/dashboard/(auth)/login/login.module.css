@@ -68,3 +68,17 @@
 .google:hover {
   background-color: rgba(228, 97, 50, 0.803);
 }
+
+.buttonPos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 15px;
+  width: 300px;
+  background-color: #53c28b;
+  color: #eee;
+  border-radius: 5px;
+  border: none;
+  justify-content: center;
+  font-weight: bold;
+}
