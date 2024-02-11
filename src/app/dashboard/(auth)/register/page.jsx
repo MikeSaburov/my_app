@@ -2,13 +2,29 @@
 
 import Link from 'next/link';
 import styles from './register.module.css';
+import { useAmp } from 'next/amp';
+import { useState } from 'react';
 
 const Register = () => {
+  const [error, setError] = useState(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const name = e.target[0].value;
+    const password = e.target[1].value;
+    const email = e.target[2].value;
+  };
+
+  try {
+  } catch (error) {
+    setError(error);
+    console.log(error);
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Create an Account</h1>
       <h2 className={styles.subtitle}>Please sign up to see the dashboard.</h2>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Username"
