@@ -1,9 +1,12 @@
 'use client';
 
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import styles from './login.module.css';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
+  const session = useSession();
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <form className={styles.form}>
