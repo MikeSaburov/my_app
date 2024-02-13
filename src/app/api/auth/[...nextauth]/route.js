@@ -34,11 +34,14 @@ const handler = NextAuth({
             throw new Error('Неверный пользователь или пароль!');
           }
         } catch (error) {
-          throw new Error(error);
+          throw new Error('Не удалось зайти', error);
         }
       },
     }),
   ],
+  pages: {
+    error: '/dashboard/login',
+  },
 });
 
 export { handler as GET, handler as POST };
