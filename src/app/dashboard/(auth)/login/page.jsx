@@ -8,8 +8,6 @@ const Login = () => {
   const session = useSession();
   const router = useRouter();
 
-  console.log(session);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target[0].value;
