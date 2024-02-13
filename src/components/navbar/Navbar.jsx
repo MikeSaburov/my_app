@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import styles from './navbar.module.css';
 import DarkModeToggle from '../darkModeToggle/DarkModeToggle';
 
@@ -29,7 +29,11 @@ export default function Navbar() {
             {link.title}
           </Link>
         ))}
-        <button className={styles.logout}>Logout</button>
+        {session.status === 'authenticated' && (
+          <button className={styles.logout} onClick={signOut}>
+            Logout
+          </button>
+        )}
       </div>
     </nav>
   );
