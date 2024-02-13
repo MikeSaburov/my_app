@@ -3,8 +3,8 @@ import connect from '@/utils/db';
 import bcrypt from 'bcryptjs';
 import { NextResponse } from 'next/server';
 
-export const POST = async (req) => {
-  const { name, email, password } = req.json();
+export const POST = async (request) => {
+  const { name, email, password } = await request.json();
 
   await connect();
 
@@ -22,7 +22,7 @@ export const POST = async (req) => {
       status: 201,
     });
   } catch (error) {
-    return new NextResponse('Пользователь не создан' + error.message, {
+    return new NextResponse('Пользователь не создан', {
       status: 500,
     });
   }
