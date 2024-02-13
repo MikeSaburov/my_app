@@ -8,6 +8,13 @@ const Login = () => {
   const session = useSession();
   const router = useRouter();
 
+  if (session.status === 'loading') {
+    return <p>Loading...</p>;
+  }
+  if (session.status === 'authenticated') {
+    router?.push('/dashboard');
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target[0].value;
