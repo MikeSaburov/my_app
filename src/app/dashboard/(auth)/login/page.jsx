@@ -7,9 +7,19 @@ import { useRouter } from 'next/navigation';
 const Login = () => {
   const session = useSession();
   const router = useRouter();
+
+  console.log(session);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+
+    signIn('credentials', { email, password });
+  };
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"
