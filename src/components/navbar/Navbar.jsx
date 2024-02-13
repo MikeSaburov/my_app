@@ -1,5 +1,7 @@
-import Link from 'next/link';
+'use client';
 
+import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import styles from './navbar.module.css';
 import DarkModeToggle from '../darkModeToggle/DarkModeToggle';
 
@@ -13,6 +15,8 @@ const links = [
 ];
 
 export default function Navbar() {
+  const session = useSession();
+
   return (
     <nav className={styles.container}>
       <Link className={styles.logo} href="/">
