@@ -35,10 +35,10 @@ const Dashboard = () => {
     'https://jsonplaceholder.typicode.com/posts?_limit=15',
     fetcher
   );
-  if (error) return <div>ошибка загрузки</div>;
-  if (isLoading) return <div>загрузка...</div>;
+  if (error) return <div>Ошибка загрузки</div>;
+  if (isLoading) return <div>Загрузка...</div>;
 
-  return <div>DAshboard</div>;
+  return <div>Dashboard</div>;
 };
 
 export default Dashboard;
