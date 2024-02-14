@@ -33,12 +33,13 @@ const Dashboard = () => {
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
-    'https://jsonplaceholder.typicode.com/posts?_limit=15',
+    `/api/posts?username=${session?.data?.user.name}`,
+
     fetcher
   );
   if (error) return <div>Ошибка загрузки</div>;
   if (isLoading) return <div>Загрузка...</div>;
-
+  console.log(data);
   if (session.status == 'unauthenticated') {
     router?.push('/dashboard/login');
   }
