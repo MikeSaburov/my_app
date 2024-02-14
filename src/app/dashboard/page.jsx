@@ -4,6 +4,7 @@ import styles from './dashboard.module.css';
 import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const Dashboard = () => {
   // const [data, setData] = useState([]);
@@ -33,18 +34,48 @@ const Dashboard = () => {
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
-    `/api/posts?username=${session?.data?.user.name}`,
+    `/api/posts?username=${session?.data?.username}`,
 
     fetcher
   );
   if (error) return <div>Ошибка загрузки</div>;
-  if (isLoading) return <div>Загрузка...</div>;
   console.log(data);
   if (session.status == 'unauthenticated') {
     router?.push('/dashboard/login');
   }
-
-  return <div>Dashboard</div>;
+  if (session.status == 'authenticated') {
+    return (
+      <div className={styles.container}>
+        <div className={styles.posts}>
+          {isLoading
+            ? 'Загрузка...'
+            : data?.map((post) => (
+                <div className={styles.post} key={post._id}>
+                  <div className={styles.imgContainer}>
+                    <Image
+                      src={post.img}
+                      alt={post.title}
+                      width={200}
+                      height={100}
+                    />
+                  </div>
+                  <h2 className={styles.postTitle}>{post.title}</h2>
+                  <span className={styles.delete}>X</span>
+                </div>
+              ))}
+        </div>
+        {/* onSubmit={handleSubmit} */}
+        <form className={styles.new}>
+          <h1>Add New Post</h1>
+          <input type="text" placeholder="Title" className={styles.input} />
+          <input type="text" placeholder="Desc" className={styles.input} />
+          <input type="text" placeholder="Image" className={styles.input} />
+          <textarea cols="30" rows="10" className={styles.textArea} />
+          <button className={styles.button}> Send</button>
+        </form>
+      </div>
+    );
+  }
 };
 
 export default Dashboard;
