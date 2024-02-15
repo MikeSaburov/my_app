@@ -38,7 +38,7 @@ const Dashboard = () => {
 
     fetcher
   );
-  if (error) return <div>Ошибка загрузки</div>;
+
   console.log(data);
   if (session.status == 'unauthenticated') {
     router?.push('/dashboard/login');
@@ -52,6 +52,16 @@ const Dashboard = () => {
     const content = e.target[3].value;
 
     try {
+      await fetch('/api/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+          title,
+          desc,
+          img,
+          content,
+          username: session.data.user.name,
+        }),
+      });
     } catch (error) {
       console.log(error);
     }
