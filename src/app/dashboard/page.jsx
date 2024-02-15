@@ -43,6 +43,20 @@ const Dashboard = () => {
   if (session.status == 'unauthenticated') {
     router?.push('/dashboard/login');
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const title = e.target[0].value;
+    const desc = e.target[1].value;
+    const img = e.target[2].value;
+    const content = e.target[3].value;
+
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (session.status == 'authenticated') {
     return (
       <div className={styles.container}>
@@ -64,8 +78,7 @@ const Dashboard = () => {
                 </div>
               ))}
         </div>
-        {/* onSubmit={handleSubmit} */}
-        <form className={styles.new}>
+        <form className={styles.new} onSubmit={handleSubmit}>
           <h1>Add New Post</h1>
           <input type="text" placeholder="Title" className={styles.input} />
           <input type="text" placeholder="Desc" className={styles.input} />
