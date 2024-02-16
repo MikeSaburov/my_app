@@ -1,7 +1,8 @@
 'use client';
+
+import useSWR from 'swr';
 import { useState, useEffect } from 'react';
 import styles from './dashboard.module.css';
-import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -13,19 +14,20 @@ const Dashboard = () => {
 
   // useEffect(() => {
   //   const getData = async () => {
-  //     const res = await fetch(
-  //       'https://jsonplaceholder.typicode.com/posts?_limit=15',
-  //       { cache: 'no-store' }
-  //     );
+  //     const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+  //       cache: "no-store",
+  //     });
+
   //     if (!res.ok) {
   //       setError(true);
   //     }
-  //     const data = await res.json();
-  //     setData(data);
-  //     setIsLoading(false);
+  //     const data = await res.json()
+
+  //     setData(data)
+  //     setIsLoading(false)
   //   };
-  //   getData();
-  // }, []);
+  //   getData()
+  // },[]);
 
   // console.log(data);
 
@@ -33,13 +35,14 @@ const Dashboard = () => {
   const router = useRouter();
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error, isLoading } = useSWR(
-    `/api/posts?username=${session?.data?.username}`,
-
+  const { data, mutate, error, isLoading } = useSWR(
+    `/api/posts?username=${session?.data?.user.name}`,
     fetcher
   );
 
-  console.log(data);
+  if (session.status == 'loading') {
+    return <p>Loading...</p>;
+  }
   if (session.status == 'unauthenticated') {
     router?.push('/dashboard/login');
   }
@@ -62,6 +65,19 @@ const Dashboard = () => {
           username: session.data.user.name,
         }),
       });
+      mutate();
+      e.target.reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`/api/posts/${id}`, {
+        method: 'DELETE',
+      });
+      mutate();
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +88,7 @@ const Dashboard = () => {
       <div className={styles.container}>
         <div className={styles.posts}>
           {isLoading
-            ? 'Загрузка...'
+            ? 'Loading'
             : data?.map((post) => (
                 <div className={styles.post} key={post._id}>
                   <div className={styles.imgContainer}>
@@ -84,10 +100,16 @@ const Dashboard = () => {
                     />
                   </div>
                   <h2 className={styles.postTitle}>{post.title}</h2>
-                  <span className={styles.delete}>X</span>
+                  <span
+                    className={styles.delete}
+                    onClick={() => handleDelete(post._id)}
+                  >
+                    X
+                  </span>
                 </div>
               ))}
         </div>
+
         <form className={styles.new} onSubmit={handleSubmit}>
           <h1>Add New Post</h1>
           <input type="text" placeholder="Title" className={styles.input} />
