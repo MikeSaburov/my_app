@@ -1,7 +1,7 @@
 'use client';
 
 import useSWR from 'swr';
-import { useState, useEffect } from 'react';
+import React, { FormEvent } from 'react';
 import styles from './dashboard.module.css';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -32,6 +32,7 @@ const Dashboard = () => {
     const content = e.target[3].value;
 
     try {
+      const formData = new FormData(e.currentTarget);
       await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({

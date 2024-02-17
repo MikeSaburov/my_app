@@ -12,3 +12,14 @@ export const GET = async (req, { params }) => {
     return new NextResponse('Ошибка ответа БД!', { status: 500 });
   }
 };
+
+export const DELETE = async (req, { params }) => {
+  const { id } = params;
+  try {
+    await connect();
+    await Post.findByIdAndDelete(id);
+    return new NextResponse('Потс удален', { status: 200 });
+  } catch (error) {
+    return new NextResponse('Ошибка ответа БД!', { status: 500 });
+  }
+};
