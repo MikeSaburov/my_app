@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 async function getData() {
-  const res = await fetch('http://localhost:3000/api/posts', {
+  const res = await fetch('/api/posts', {
     cache: 'no-store',
   });
   if (!res.ok) {
