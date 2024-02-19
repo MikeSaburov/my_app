@@ -8,7 +8,8 @@ export const metadata = {
 };
 
 async function getData() {
-  const res = await fetch('/api/posts', {
+  const apiEndpoint = process.env.NEXTAUTH_URL;
+  const res = await fetch(`${apiEndpoint}/api/posts`, {
     cache: 'no-store',
   });
   if (!res.ok) {
