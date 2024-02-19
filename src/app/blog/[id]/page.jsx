@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 async function getData(id) {
   const apiEndpoint = process.env.NEXTAUTH_URL;
-  const res = await fetch(`${apiEndpoint}/api/posts/${id}`, {
+  const res = await fetch(process.env.NEXTAUTH_URL + `/api/posts/${id}`, {
     cache: 'no-store',
   });
   if (!res.ok) {
