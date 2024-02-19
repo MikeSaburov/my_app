@@ -9,7 +9,7 @@ export const metadata = {
 
 async function getData() {
   const res = await fetch(
-    'https://my-k7voq3jm7-mikes-projects-76ac031b.vercel.app/api/posts',
+    'https://my-app-git-main-mikes-projects-76ac031b.vercel.app/api/posts',
     {
       cache: 'no-store',
     }

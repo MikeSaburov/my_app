@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 async function getData(id) {
   const res = await fetch(
-    `https://my-k7voq3jm7-mikes-projects-76ac031b.vercel.app/api/posts/${id}`,
+    `https://my-app-git-main-mikes-projects-76ac031b.vercel.app/api/posts/${id}`,
     {
       cache: 'no-store',
     }
