@@ -8,9 +8,12 @@ export const metadata = {
 };
 
 async function getData() {
-  const res = await fetch(process.env.NEXTAUTH_URL + '/api/posts', {
-    cache: 'no-store',
-  });
+  const res = await fetch(
+    'https://my-k7voq3jm7-mikes-projects-76ac031b.vercel.app/api/posts',
+    {
+      cache: 'no-store',
+    }
+  );
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }

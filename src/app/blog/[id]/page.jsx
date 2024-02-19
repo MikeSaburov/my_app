@@ -2,10 +2,12 @@ import styles from './id.module.css';
 import Image from 'next/image';
 
 async function getData(id) {
-  const apiEndpoint = process.env.NEXTAUTH_URL;
-  const res = await fetch(process.env.NEXTAUTH_URL + `/api/posts/${id}`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(
+    `https://my-k7voq3jm7-mikes-projects-76ac031b.vercel.app/api/posts/${id}`,
+    {
+      cache: 'no-store',
+    }
+  );
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
